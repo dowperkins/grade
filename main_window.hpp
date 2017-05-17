@@ -7,7 +7,11 @@ class Main : public QWidget{
 	Q_OBJECT
 
 public:
+	Main();
+
+public slots:
 	//
+	
 private:
 	//
 };
