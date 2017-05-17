@@ -43,11 +43,6 @@ set(test_src
 )
 ##########################################
 
-##not entirely sure what this does##
-##########################################
-set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
-##########################################
-
 # create the executable
 ##########################################
 add_executable(grade grade.cpp ${_src} ${gui_src})
