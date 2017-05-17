@@ -23,7 +23,7 @@ find_package(Qt5 COMPONENTS Widgets Core Test REQUIRED)
 #put all source files here
 ##########################################
 set(_src 
-    grade.cpp)
+    )
 ##########################################
 
 #set gui
@@ -50,7 +50,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 # create the executable
 ##########################################
-add_executable(grade ${_src} ${gui_src})
+add_executable(grade grade.cpp ${_src} ${gui_src})
 target_link_libraries(grade Qt5::Widgets)
 ##########################################
 
