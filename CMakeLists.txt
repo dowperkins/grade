@@ -31,6 +31,7 @@ set(_src
 ##########################################
 set(gui_src
     main_window.hpp main_window.cpp
+    add_score.hpp add_score.cpp
   )
 ##########################################
 
