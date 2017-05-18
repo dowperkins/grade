@@ -3,24 +3,32 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QDoubleSpinBox>
-#include <QDebug>
+#include <QLabel>
 
 Main::Main(){
 	QHBoxLayout * hLayout = new QHBoxLayout;
+	QHBoxLayout * nLayout = new QHBoxLayout;
+	QHBoxLayout * dLayout = new QHBoxLayout;
 	QVBoxLayout * vLayout = new QVBoxLayout;
 	QDoubleSpinBox * numer = new QDoubleSpinBox;
 	QDoubleSpinBox * denom = new QDoubleSpinBox;
+	QLabel * nLabel = new QLabel("Score: ");
+	QLabel * dLabel = new QLabel("Out of: ");
 	QPushButton * add = new QPushButton("Add");
 	QPushButton * quit = new QPushButton("Quit");
 
 	numer->setRange(0, 100);
-	numer->setPrefix("Score: ");
 
-	denom->setRange(0, 100);
-	denom->setPrefix("Out of: ");
+	denom->setRange(1, 100);
 
-	vLayout->addWidget(numer);
-	vLayout->addWidget(denom);
+	nLayout->addWidget(nLabel);
+	nLayout->addWidget(numer);
+
+	dLayout->addWidget(dLabel);
+	dLayout->addWidget(denom);
+
+	vLayout->addItem(nLayout);
+	vLayout->addItem(dLayout);
 
 	hLayout->addItem(vLayout);
 	hLayout->addWidget(add);
@@ -31,6 +39,7 @@ Main::Main(){
 	QObject::connect(numer, SIGNAL(valueChanged(double)), this, SLOT(storeNum(double)));
 	QObject::connect(denom, SIGNAL(valueChanged(double)), this, SLOT(storeDenom(double)));
 	QObject::connect(add, SIGNAL(clicked()), this, SLOT(add()));
+	//QObject::connect(quit, SIGNAL(clicked()), score, SLOT(close()));
 	QObject::connect(quit, SIGNAL(clicked()), this, SLOT(close()));
 }
 
@@ -80,6 +89,9 @@ void Main::add(){
 	double result = percent/range;
 	result = result * 100;
 	qDebug() << numToLetter(result);
+
+	score = new AddScore;
+	score->show();
 }
 
 void Main::storeNum(double d){

@@ -4,6 +4,8 @@
 //includes
 #include <QWidget>
 #include <QString>
+#include <QDebug>
+#include "add_score.hpp"
 
 //forward declarations
 
@@ -20,9 +22,13 @@ public slots:
 	void storeNum(double d);
 	void storeDenom(double d);
 
+signals:
+	void addClicked();
+
 private:
 	double percent;
 	double range;
+	AddScore * score;
 };
 
 #endif
